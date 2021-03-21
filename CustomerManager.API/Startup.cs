@@ -33,6 +33,7 @@ namespace CustomerManager.API
             services.AddDbContext<CustomerContext>(opt =>
             opt.UseInMemoryDatabase("CustomerList"));
 
+            services.AddCors();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddControllers();
@@ -55,7 +56,7 @@ namespace CustomerManager.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors(p => p.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
