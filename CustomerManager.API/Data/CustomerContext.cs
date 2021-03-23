@@ -12,8 +12,10 @@ namespace CustomerManager.API.Data
 
         public CustomerContext(DbContextOptions<CustomerContext> options) : base(options)
         {
-
         }
         public DbSet<Customer> Customers { get; set; }
+        
+        //Todo
+        //Add some relationships
     }
 }

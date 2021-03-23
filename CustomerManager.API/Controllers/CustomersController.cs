@@ -4,14 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using CustomerManager.API.Models;
 using CustomerManager.API.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace CustomerManager.API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class CustomersController : ControllerBase
+    [Authorize]
+    public class CustomersController : BaseApiController
     {
         private readonly ILogger<CustomersController> _logger;
         private readonly ICustomerRepository _customerRepo;
@@ -20,8 +20,14 @@ namespace CustomerManager.API.Controllers
         public CustomersController(ILogger<CustomersController> logger, ICustomerRepository customerRepo, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+
+            //Todo
+            //move to service
             _customerRepo = customerRepo;
             _unitOfWork = unitOfWork;
+
+            //Todo
+            //move to data seed class 
             FakeSeedDataAsync();
         }
 
@@ -30,7 +36,6 @@ namespace CustomerManager.API.Controllers
             await _customerRepo.AddAsync(new Customer { Name = "Monkey" });
             await _unitOfWork.SaveAsync();
         }
-
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
@@ -71,6 +76,10 @@ namespace CustomerManager.API.Controllers
         [HttpDelete]
         public IActionResult RemoveCustomer(Customer customer)
         {
+            //Todo
+            //Throw keynotfound exception inside of service
+            //Catch and send back Notfound
+
             _customerRepo.Remove(customer);
             _unitOfWork.SaveAsync();
             return NoContent();

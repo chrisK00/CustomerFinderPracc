@@ -19,9 +19,12 @@ namespace CustomerManager.API.Repositories
         {
             await _context.Customers.AddAsync(customer);
         }
-
+     
         public async Task<ICollection<Customer>> GetAllAsync()
         {
+            //Todo
+            //use automapper queryable extensions
+            //split into two steps for easier debugging
             return await _context.Customers.ToListAsync();
         }
 

@@ -14,6 +14,9 @@ namespace CustomerManager.API
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+            
+            //Todo
+            //data seed
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

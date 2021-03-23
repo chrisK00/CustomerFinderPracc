@@ -30,6 +30,9 @@ namespace CustomerManager.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Todo
+            //move to serviceextension class
+
             services.AddDbContext<CustomerContext>(opt =>
             opt.UseInMemoryDatabase("CustomerList"));
 
@@ -57,6 +60,8 @@ namespace CustomerManager.API
 
             app.UseRouting();
             app.UseCors(p => p.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
