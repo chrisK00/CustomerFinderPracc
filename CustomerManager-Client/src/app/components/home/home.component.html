@@ -1,3 +1,5 @@
-<p>home works!</p>
-
-<p *ngFor="let customer of customers">{{customer.id}}. {{customer.name}}</p>
+<div class="row">
+    <ul class="list-group ml-5">
+        <app-customer-row *ngFor="let customer of customers" [customer]=customer></app-customer-row>
+    </ul>
+</div>

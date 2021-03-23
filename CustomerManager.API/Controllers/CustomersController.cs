@@ -22,7 +22,15 @@ namespace CustomerManager.API.Controllers
             _logger = logger;
             _customerRepo = customerRepo;
             _unitOfWork = unitOfWork;
+            FakeSeedDataAsync();
         }
+
+       private async Task FakeSeedDataAsync()
+        {
+            await _customerRepo.AddAsync(new Customer { Name = "Monkey" });
+            await _unitOfWork.SaveAsync();
+        }
+
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
