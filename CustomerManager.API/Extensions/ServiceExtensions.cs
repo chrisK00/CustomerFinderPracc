@@ -11,6 +11,7 @@ namespace CustomerManager.API.Extensions
         public static IServiceCollection ConfigureIdentityServices(this IServiceCollection services)
         {
             //config jwt token 
+            //make a collection in postman for easier testing
             return services;
         }
     }
