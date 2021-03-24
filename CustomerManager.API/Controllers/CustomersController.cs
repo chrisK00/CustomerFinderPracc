@@ -43,7 +43,7 @@ namespace CustomerManager.API.Controllers
             return Ok(await _customerRepo.GetAllAsync());
         }
 
-        [HttpGet("name")]
+        [HttpGet("{name}")]
         public async Task<ActionResult<Customer>> GetCustomer(string name)
         {
             var customer = await _customerRepo.GetByNameAsync(name);
