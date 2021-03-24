@@ -9,8 +9,6 @@ Api:
 - InMemoryDb (EF)
 - Extension method
 - JWT token and Authorization
-- 
-- 
 
 Angular:
 - Parent to child communication
