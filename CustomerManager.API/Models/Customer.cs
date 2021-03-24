@@ -10,8 +10,7 @@ namespace CustomerManager.API.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        //todo
-        //move to dto
-        public string Token { get; set; }
+        //todo 
+        //add list of photos and fully define relationship
     }
 }

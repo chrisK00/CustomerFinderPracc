@@ -35,29 +35,7 @@ namespace CustomerManager.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Todo
-            //move to serviceextension class
-
-            services.AddDbContext<CustomerContext>(opt =>
-            opt.UseInMemoryDatabase("CustomerList"));
-
-            services.AddScoped<ITokenService, TokenService>();
             services.AddCors();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
-
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(opt =>
-                {
-                    opt.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SUPER SECRET KEY")),
-                        ValidateAudience = false,
-                        ValidateIssuer = false
-                    };
-                });
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
