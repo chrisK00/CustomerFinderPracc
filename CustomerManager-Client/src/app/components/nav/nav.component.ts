@@ -20,4 +20,8 @@ export class NavComponent implements OnInit {
     this.authService.login().subscribe();
   }
 
+  logout() {
+    this.authService.logout();
+  }
+
 }

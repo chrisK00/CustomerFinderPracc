@@ -1,1 +1,1 @@
-<app-register></app-register>
+<app-register *ngIf="(authService.currentCustomer$ | async) === null"></app-register>

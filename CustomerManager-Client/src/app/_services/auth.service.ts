@@ -22,9 +22,14 @@ export class AuthService {
         if (!customer) {
           return;
         }
-        localStorage.setItem('user', JSON.stringify(customer));
+        localStorage.setItem('customer', JSON.stringify(customer));
         this.currentCustomer.next(customer);
       })
     )
+  }
+
+  logout() {
+    localStorage.removeItem('customer');
+    this.currentCustomer.next(null);
   }
 }
