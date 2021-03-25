@@ -6,13 +6,16 @@ Will expand the app later on
 Api:
 - Repository pattern and unit of work
 - Http requests/responses
-- InMemoryDb (EF)
-- Extension method
+- InMemoryDb (EF) and SQLite
+- Extension methods
 - JWT token and Authorization
+- DTOs
+- Data seeding
+- Automapper
 
 Angular:
 - Parent to child communication
-- Ng directives
+- Ng directives, ngForm, Model binding
 - Services
 - Http request/response
 - Observables and subject
@@ -22,8 +25,11 @@ Angular:
 - Typescript
 - async pipe
 - Interceptor
+- rxjs
+- bootstrap
 
 Postman:
 - Http requests/responses
 - JWT token
-
+- Tests
+- Property Binding
