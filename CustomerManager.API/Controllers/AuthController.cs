@@ -21,6 +21,7 @@ namespace CustomerManager.API.Controllers
         {
             //Todo
             //setup identity framework 
+            //authenticate
 
             var token = _tokenService.CreateToken(customer);
             _logger.LogInformation($"New token created for {customer.Username}", token);
