@@ -10,13 +10,16 @@ import { NavComponent } from './components/nav/nav.component';
 import { CustomerRowComponent } from './components/customer-row/customer-row.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { TestErrorsComponent } from './components/test-errors/test-errors.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavComponent,
-    CustomerRowComponent
+    CustomerRowComponent,
+    TestErrorsComponent
   ],
   imports: [
     BrowserModule,
