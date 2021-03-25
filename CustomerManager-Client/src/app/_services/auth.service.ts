@@ -4,6 +4,7 @@ import { ReplaySubject, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Customer } from '../_interfaces/customer';
+import { CustomerLogin } from '../_interfaces/customerLogin';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login() {
-    const userLogin = { username: 'chris' }
-    return this.http.post(`${this.baseUrl}auth/login`, userLogin).pipe(
+  login(customer: CustomerLogin) {
+    return this.http.post(`${this.baseUrl}auth/login`, customer).pipe(
       map((customer: Customer) => {
         if (!customer) {
           return;

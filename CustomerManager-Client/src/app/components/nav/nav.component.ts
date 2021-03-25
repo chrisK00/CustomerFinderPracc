@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/_services/auth.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  customer: CustomerLogin;
+  customer: CustomerLogin = new CustomerLogin();
 
   constructor(public authService: AuthService) { }
 
@@ -17,7 +17,7 @@ export class NavComponent implements OnInit {
   }
 
   login() {
-    this.authService.login().subscribe();
+    this.authService.login(this.customer).subscribe();
   }
 
   logout() {
