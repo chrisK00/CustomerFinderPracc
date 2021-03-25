@@ -19,7 +19,7 @@ namespace CustomerManager.API.Services
 
         public string CreateToken()
         {
-            var claims = new List<Claim>()
+            var claims = new Claim[]
             {
               new Claim(JwtRegisteredClaimNames.NameId, "chris")
             };
