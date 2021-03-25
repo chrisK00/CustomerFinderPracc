@@ -52,7 +52,7 @@ namespace CustomerManager.API.Controllers
 
             if (customer == null)
             {
-                _logger.LogInformation($"customer {username} not found");
+                _logger.LogWarning($"customer {username} not found");
                 return NotFound(username);
             }
 

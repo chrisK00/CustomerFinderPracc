@@ -7,6 +7,7 @@ namespace CustomerManager.API.Models
     public class Photo
     {
         public int Id { get; set; }
+
         [Required]
         public string Url { get; set; }
         public bool IsMain { get; set; }

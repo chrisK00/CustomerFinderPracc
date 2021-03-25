@@ -1,0 +1,15 @@
+﻿[
+  '{{repeat(3)}}',
+  {
+    Username: '{{firstName("male")}}',
+    LookingFor: '{{lorem(1, "sentences")}}',
+    Photos: [
+        {
+          Url: function(num) {
+          return 'https://randomuser.me/api/portraits/male/' + num.integer(1,99) + '.jpg';
+        },
+        IsMain: true
+      }
+    ]
+  }
+]

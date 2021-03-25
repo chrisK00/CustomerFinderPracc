@@ -1,0 +1,32 @@
+﻿[
+  {
+    "Username": "Drake",
+    "LookingFor": "Fugiat culpa nulla id ullamco laboris quis ipsum aliquip ullamco aute consequat labore.",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/male/77.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "Username": "Faulkner",
+    "LookingFor": "Est id nisi incididunt minim sunt.",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/male/48.jpg",
+        "IsMain": true
+      }
+    ]
+  },
+  {
+    "Username": "Hull",
+    "LookingFor": "Amet ut fugiat fugiat est occaecat in in duis amet.",
+    "Photos": [
+      {
+        "Url": "https://randomuser.me/api/portraits/male/7.jpg",
+        "IsMain": true
+      }
+    ]
+  }
+]
