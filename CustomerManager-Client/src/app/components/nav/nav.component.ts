@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Customer } from 'src/app/_interfaces/customer';
+import { CustomerLogin } from 'src/app/_interfaces/customerLogin';
 import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
@@ -7,8 +9,9 @@ import { AuthService } from 'src/app/_services/auth.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  customer: CustomerLogin;
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
