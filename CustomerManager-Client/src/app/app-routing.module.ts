@@ -4,7 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TestErrorsComponent } from './components/test-errors/test-errors.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent }, 
   { path: 'errors', component: TestErrorsComponent },
   { path: '**', component: HomeComponent, pathMatch: 'full' }
 ];

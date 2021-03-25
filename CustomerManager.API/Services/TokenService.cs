@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using CustomerManager.API.DTOs;
 using CustomerManager.API.Services.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 
@@ -17,11 +17,11 @@ namespace CustomerManager.API.Services
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SUPER SECRET KEY"));
         }
 
-        public string CreateToken()
+        public string CreateToken(CustomerLoginDTO customer)
         {
             var claims = new Claim[]
             {
-              new Claim(JwtRegisteredClaimNames.NameId, "chris")
+              new Claim(JwtRegisteredClaimNames.NameId, customer.Username)
             };
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 

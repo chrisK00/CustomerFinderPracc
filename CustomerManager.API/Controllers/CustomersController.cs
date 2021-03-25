@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using CustomerManager.API.DTOs;
 using CustomerManager.API.Models;
 using CustomerManager.API.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -33,30 +32,34 @@ namespace CustomerManager.API.Controllers
 
        private async Task FakeSeedDataAsync()
         {
-            await _customerRepo.AddAsync(new Customer { Name = "Monkey" });
+            await _customerRepo.AddAsync(new Customer { Username = "Monkey" });
             await _unitOfWork.SaveAsync();
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
+        public async Task<ActionResult<IEnumerable<MemberDTO>>> GetCustomers()
         {
-            return Ok(await _customerRepo.GetAllAsync());
+            var customers = await _customerRepo.GetMembersAsync();
+            return Ok(customers);
         }
 
-        [HttpGet("{name}")]
-        public async Task<ActionResult<Customer>> GetCustomer(string name)
+        [HttpGet("{username}")]
+        public async Task<ActionResult<MemberDTO>> GetCustomer(string username)
         {
-            var customer = await _customerRepo.GetByNameAsync(name);
+            var customer = await _customerRepo.GetMemberByUsernameAsync(username);
             // return customer == null ? NotFound(name) : customer;
 
             if (customer == null)
             {
-                _logger.LogInformation($"customer {name} not found");
-                return NotFound(name);
+                _logger.LogInformation($"customer {username} not found");
+                return NotFound(username);
             }
+
             return customer;
         }
 
+        //Todo
+        //update the method below
         [HttpPatch]
         public async Task<IActionResult> UpdateCustomer(Customer customer)
         {
@@ -70,7 +73,7 @@ namespace CustomerManager.API.Controllers
         {
             await _customerRepo.AddAsync(customer);
             await _unitOfWork.SaveAsync();
-            return Created("Customers", customer.Name);
+            return Created("Customers", customer.Username);
         }
 
         [HttpDelete]

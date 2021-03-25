@@ -1,31 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CustomerManager.API.DTOs;
-using CustomerManager.API.Models;
+﻿using CustomerManager.API.DTOs;
 using CustomerManager.API.Services.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace CustomerManager.API.Controllers
 {
     public class AuthController : BaseApiController
     {
         private readonly ITokenService _tokenService;
+        private readonly ILogger<AuthController> _logger;
 
-        public AuthController(ITokenService tokenService)
+        public AuthController(ITokenService tokenService, ILogger<AuthController> logger)
         {
             _tokenService = tokenService;
+            _logger = logger;
         }
+
         [HttpPost("login")]
-        public ActionResult<UserDTO> Login(UserLoginDTO user)
+        public ActionResult<CustomerDTO> Login(CustomerLoginDTO customer)
         {
             //Todo
             //setup identity framework 
 
-            var token = _tokenService.CreateToken();
-            return new UserDTO { Token = token };
+            var token = _tokenService.CreateToken(customer);
+            _logger.LogInformation($"New token created for {customer.Username}", token);
+
+            return new CustomerDTO
+            {
+                Username = customer.Username,
+                Token = token
+            };
         }
     }
 }

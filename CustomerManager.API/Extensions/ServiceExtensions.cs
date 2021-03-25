@@ -7,6 +7,7 @@ using CustomerManager.API.Services;
 using CustomerManager.API.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
@@ -14,11 +15,15 @@ namespace CustomerManager.API.Extensions
 {
     public static class ServiceExtensions
     {
-        public static IServiceCollection ConfigureAppServices(this IServiceCollection services)
+        public static IServiceCollection ConfigureAppServices(this IServiceCollection services, IConfiguration config)
         {
-            services.AddAutoMapper(typeof(UserProfiles).Assembly);
+            services.AddAutoMapper(typeof(CustomerProfiles).Assembly);
+            /*  services.AddDbContext<CustomerContext>(opt =>
+             opt.UseInMemoryDatabase("CustomerList"));
+            */
+
             services.AddDbContext<CustomerContext>(opt =>
-           opt.UseInMemoryDatabase("CustomerList"));
+           opt.UseSqlite(config.GetConnectionString("Default")));
 
             services.AddScoped<ITokenService, TokenService>();          
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -43,7 +48,7 @@ namespace CustomerManager.API.Extensions
 
             //Todo
             //make a collection in postman for easier testing
-            //move key to appsettings
+            //move key to appsettings secret/dev
             return services;
         }
     }

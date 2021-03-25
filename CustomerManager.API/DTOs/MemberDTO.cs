@@ -4,15 +4,15 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CustomerManager.API.Models
+namespace CustomerManager.API.DTOs
 {
-    public class Customer
+    public class MemberDTO
     {
         public int Id { get; set; }
-
         [Required]
         public string Username { get; set; }
         public string LookingFor { get; set; }
-        public ICollection<Photo> Photos { get; set; } = new List<Photo>();
+        public string MainPhotoUrl { get; set; }
+        public ICollection<PhotoDTO> Photos { get; set; } = new List<PhotoDTO>();
     }
 }
