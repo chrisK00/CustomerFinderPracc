@@ -19,7 +19,7 @@ namespace CustomerManager.API.Controllers
             _tokenService = tokenService;
         }
         [HttpPost("login")]
-        public ActionResult<UserDTO> Login(string user)
+        public ActionResult<UserDTO> Login(UserLoginDTO user)
         {
             //Todo
             //setup identity framework 
