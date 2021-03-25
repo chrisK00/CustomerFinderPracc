@@ -15,11 +15,13 @@ Angular:
 - Ng directive
 - Services
 - Http request/response
-- Observable
+- Observables and subject
 - Routing
 - Interface
 - JWT token
 - Typescript
+- async pipe
+- Interceptor
 
 Postman:
 - Http requests/responses
