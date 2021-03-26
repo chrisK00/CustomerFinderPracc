@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/_interfaces/user';
-import { UserLoginDTO } from 'src/app/_interfaces/userLoginDTO';
 import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { AuthService } from 'src/app/_services/auth.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  user: UserLoginDTO = new UserLoginDTO();
+  user: User = new User();
 
   constructor(public authService: AuthService) { }
 
