@@ -22,6 +22,12 @@ namespace CustomerManager.API.Repositories
             _mapper = mapper;
         }
 
+        public async Task<Customer> GetCustomerAsync(int id)
+        {
+            var customer = await _context.Customers.Include(p => p.Photos).FirstOrDefaultAsync(c => c.Id == id);
+            return customer;
+        }
+
         public async Task<ICollection<MemberDTO>> GetMembersAsync()
         {           
             var members = await _context.Customers.ProjectTo<MemberDTO>(_mapper.ConfigurationProvider).ToListAsync();
@@ -44,8 +50,6 @@ namespace CustomerManager.API.Repositories
             return customer;
         }
 
-        //Todo
-        //update below they are old
         public void Remove(Customer customer)
         {
             _context.Customers.Remove(customer);
