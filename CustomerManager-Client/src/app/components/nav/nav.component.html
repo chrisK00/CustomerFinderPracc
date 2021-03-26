@@ -2,7 +2,7 @@
     <a class="navbar-brand" routerLink=''>Customer Finder</a>
     <ul *ngIf="authService.currentUser$ | async" class="navbar-nav mr-auto">
         <li class="nav-item"> <a class="nav-link" routerLinkActive="active" routerLink="/errors">Errors</a></li>
-        <li class="nav-item"> <a class="nav-link" routerLinkActive="active" routerLink="/customers">Members</a></li>
+        <li class="nav-item"> <a class="nav-link" routerLinkActive="active" routerLink="/customers">Customers</a></li>
     </ul>
 
     <ng-container *ngIf="(authService.currentUser$ | async) === null">
