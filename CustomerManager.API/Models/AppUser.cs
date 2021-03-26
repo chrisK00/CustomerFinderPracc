@@ -5,8 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace CustomerManager.API.Models
-{
-    public class Customer
+{ 
+    public class AppUser
     {
         public int Id { get; set; }
 

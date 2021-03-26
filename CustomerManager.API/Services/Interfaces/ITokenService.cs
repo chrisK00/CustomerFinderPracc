@@ -9,6 +9,6 @@ namespace CustomerManager.API.Services.Interfaces
 {
     public interface ITokenService
     {
-        string CreateToken(CustomerLoginDTO customer);
+        string CreateToken(UserLoginDTO customer);
     }
 }

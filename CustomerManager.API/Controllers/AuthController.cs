@@ -17,7 +17,7 @@ namespace CustomerManager.API.Controllers
         }
 
         [HttpPost("login")]
-        public ActionResult<CustomerDTO> Login(CustomerLoginDTO customer)
+        public ActionResult<UserDTO> Login(UserLoginDTO customer)
         {
             //Todo
             //setup identity framework 
@@ -26,7 +26,7 @@ namespace CustomerManager.API.Controllers
             var token = _tokenService.CreateToken(customer);
             _logger.LogInformation($"New token created for {customer.Username}", token);
 
-            return new CustomerDTO
+            return new UserDTO
             {
                 Username = customer.Username,
                 Token = token

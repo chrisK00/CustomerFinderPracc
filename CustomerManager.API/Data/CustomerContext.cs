@@ -9,6 +9,6 @@ namespace CustomerManager.API.Data
         {
         }
 
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
     }
 }

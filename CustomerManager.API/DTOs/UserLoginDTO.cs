@@ -2,7 +2,7 @@
 
 namespace CustomerManager.API.DTOs
 {
-    public class CustomerLoginDTO
+    public class UserLoginDTO
     {
         [Required]
         public string Username { get; set; }

@@ -10,12 +10,12 @@ namespace CustomerManager.API.Repositories.Interfaces
 {
     public interface ICustomerRepository
     {
-        Task<Customer> GetCustomerAsync(int id);
-        Task<CustomerDTO> GetCustomerByUsernameAsync(string username);
-        Task<MemberDTO> GetMemberByUsernameAsync(string username);
-        Task<ICollection<MemberDTO>> GetMembersAsync();
-        Task AddAsync(Customer customer);
-        void Remove(Customer customer);
-        void Update(Customer customer);
+        Task<AppUser> GetCustomerAsync(int id);
+        Task<UserDTO> GetCustomerByUsernameAsync(string username);
+        Task<CustomerDTO> GetMemberByUsernameAsync(string username);
+        Task<ICollection<CustomerDTO>> GetMembersAsync();
+        Task AddAsync(AppUser customer);
+        void Remove(AppUser customer);
+        void Update(AppUser customer);
     }
 }

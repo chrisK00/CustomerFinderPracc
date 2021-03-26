@@ -17,7 +17,7 @@ namespace CustomerManager.API.Services
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SUPER SECRET KEY"));
         }
 
-        public string CreateToken(CustomerLoginDTO customer)
+        public string CreateToken(UserLoginDTO customer)
         {
             var claims = new Claim[]
             {

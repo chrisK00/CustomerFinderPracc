@@ -13,12 +13,12 @@ namespace CustomerManager.API.Data
     {
         public static async Task SeedCustomersAsync(CustomerContext context)
         {
-            if (await context.Customers.AnyAsync())
+            if (await context.AppUsers.AnyAsync())
             {
                 return;
             }
             var customerData = await File.ReadAllTextAsync("Data/CustomerSeedData.json");
-            var customers = JsonSerializer.Deserialize<List<Customer>>(customerData);
+            var customers = JsonSerializer.Deserialize<List<AppUser>>(customerData);
 
             await context.AddRangeAsync(customers);
             await context.SaveChangesAsync();

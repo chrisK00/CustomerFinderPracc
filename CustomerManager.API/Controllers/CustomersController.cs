@@ -29,14 +29,14 @@ namespace CustomerManager.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDTO>>> GetCustomers()
+        public async Task<ActionResult<IEnumerable<CustomerDTO>>> GetCustomers()
         {
             var customers = await _customerRepo.GetMembersAsync();
             return Ok(customers);
         }
 
         [HttpGet("{username}")]
-        public async Task<ActionResult<MemberDTO>> GetCustomer(string username)
+        public async Task<ActionResult<CustomerDTO>> GetCustomer(string username)
         {
             var customer = await _customerRepo.GetMemberByUsernameAsync(username);
             // return customer == null ? NotFound(name) : customer;
@@ -52,24 +52,24 @@ namespace CustomerManager.API.Controllers
 
         //Todo
         //update the method below
-        [HttpPatch]
-        public async Task<IActionResult> UpdateCustomer(Customer customer)
-        {
+        [HttpPut("{username}")]
+        public async Task<IActionResult> UpdateCustomer(string username, AppUser customer)
+        {            
             _customerRepo.Update(customer);
             await _unitOfWork.SaveAsync();
             return NoContent();
         }
-
+        
         [HttpPost]
-        public async Task<IActionResult> AddCustomer(Customer customer)
+        public async Task<IActionResult> AddCustomer(AppUser customer)
         {
             await _customerRepo.AddAsync(customer);
             await _unitOfWork.SaveAsync();
             return Created("Customers", customer.Username);
         }
 
-        [HttpDelete]
-        public IActionResult RemoveCustomer(Customer customer)
+        [HttpDelete("{username}")]
+        public IActionResult RemoveCustomer(string username, AppUser customer)
         {
             //Todo
             //Throw keynotfound exception inside of service

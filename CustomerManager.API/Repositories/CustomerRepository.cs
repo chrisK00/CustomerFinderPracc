@@ -22,45 +22,45 @@ namespace CustomerManager.API.Repositories
             _mapper = mapper;
         }
 
-        public async Task<Customer> GetCustomerAsync(int id)
+        public async Task<AppUser> GetCustomerAsync(int id)
         {
-            var customer = await _context.Customers.Include(p => p.Photos).FirstOrDefaultAsync(c => c.Id == id);
+            var customer = await _context.AppUsers.Include(p => p.Photos).FirstOrDefaultAsync(c => c.Id == id);
             return customer;
         }
 
-        public async Task<ICollection<MemberDTO>> GetMembersAsync()
+        public async Task<ICollection<CustomerDTO>> GetMembersAsync()
         {           
-            var members = await _context.Customers.ProjectTo<MemberDTO>(_mapper.ConfigurationProvider).ToListAsync();
+            var members = await _context.AppUsers.ProjectTo<CustomerDTO>(_mapper.ConfigurationProvider).ToListAsync();
             return members;
         }
 
-        public async Task<CustomerDTO> GetCustomerByUsernameAsync(string username)
+        public async Task<UserDTO> GetCustomerByUsernameAsync(string username)
         {
-           var customer = await _context.Customers
+           var customer = await _context.AppUsers
                 .Where(c => c.Username == username)
-                .ProjectTo<CustomerDTO>(_mapper.ConfigurationProvider).SingleOrDefaultAsync();
+                .ProjectTo<UserDTO>(_mapper.ConfigurationProvider).SingleOrDefaultAsync();
             return customer;
         }
 
-        public async Task<MemberDTO> GetMemberByUsernameAsync(string username)
+        public async Task<CustomerDTO> GetMemberByUsernameAsync(string username)
         {
-            var customer = await _context.Customers
+            var customer = await _context.AppUsers
                  .Where(c => c.Username == username)
-                 .ProjectTo<MemberDTO>(_mapper.ConfigurationProvider).SingleOrDefaultAsync();
+                 .ProjectTo<CustomerDTO>(_mapper.ConfigurationProvider).SingleOrDefaultAsync();
             return customer;
         }
 
-        public void Remove(Customer customer)
+        public void Remove(AppUser customer)
         {
-            _context.Customers.Remove(customer);
+            _context.AppUsers.Remove(customer);
         }
 
-        public async Task AddAsync(Customer customer)
+        public async Task AddAsync(AppUser customer)
         {
-            await _context.Customers.AddAsync(customer);
+            await _context.AppUsers.AddAsync(customer);
         }
 
-        public void Update(Customer customer)
+        public void Update(AppUser customer)
         {
             _context.Entry(customer).State = EntityState.Modified;
         }

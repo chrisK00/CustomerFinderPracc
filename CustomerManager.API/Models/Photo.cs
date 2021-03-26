@@ -12,6 +12,6 @@ namespace CustomerManager.API.Models
         public string Url { get; set; }
         public bool IsMain { get; set; }
         public int CustomerId { get; set; }
-        public Customer Customer { get; set; }
+        public AppUser Customer { get; set; }
     }
 }
