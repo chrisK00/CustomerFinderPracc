@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { MemberListComponent } from './components/members/member-list/member-list.component';
+import { CustomerListComponent } from './components/customers/customer-list/customer-list.component';
 import { TestErrorsComponent } from './components/test-errors/test-errors.component';
 import { AuthGuard } from './_guards/auth.guard';
 
@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: '', runGuardsAndResolvers: 'always', canActivate: [AuthGuard], children: [
-      { path: 'members', component: MemberListComponent }
+      { path: 'customers', component: CustomerListComponent }
     ]
   },
   { path: 'errors', component: TestErrorsComponent },

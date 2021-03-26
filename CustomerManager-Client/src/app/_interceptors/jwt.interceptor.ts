@@ -8,7 +8,7 @@ import {
 import { Observable } from 'rxjs';
 import { AuthService } from '../_services/auth.service';
 import { take } from 'rxjs/operators';
-import { Customer } from '../_interfaces/customer';
+import { User } from '../_interfaces/user';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
@@ -16,15 +16,15 @@ export class JwtInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let currentCustomer: Customer;
-    this.authService.currentCustomer$.pipe(take(1)).subscribe(customer => currentCustomer = customer);
+    let currentUser: User;
+    this.authService.currentUser$.pipe(take(1)).subscribe(user => currentUser = user);
 
-    if (currentCustomer) {
+    if (currentUser) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${currentCustomer.token}`
+          Authorization: `Bearer ${currentUser.token}`
         }
-      })
+      });
     }
     return next.handle(request);
   }

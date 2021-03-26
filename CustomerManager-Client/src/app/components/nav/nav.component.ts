@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from 'src/app/_interfaces/customer';
-import { CustomerLogin } from 'src/app/_interfaces/customerLogin';
+import { User } from 'src/app/_interfaces/user';
+import { UserLoginDTO } from 'src/app/_interfaces/userLoginDTO';
 import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/_services/auth.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  customer: CustomerLogin = new CustomerLogin();
+  user: UserLoginDTO = new UserLoginDTO();
 
   constructor(public authService: AuthService) { }
 
@@ -17,7 +17,7 @@ export class NavComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.customer).subscribe();
+    this.authService.login(this.user).subscribe();
   }
 
   logout() {

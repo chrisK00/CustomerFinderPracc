@@ -10,11 +10,11 @@ import { AuthService } from '../_services/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService) { }
   canActivate(): Observable<boolean> {
-    return this.authService.currentCustomer$.pipe(
+    return this.authService.currentUser$.pipe(
       map(user => {
         if (user) {
           return true;
-        };
+        }
       })
 
     );

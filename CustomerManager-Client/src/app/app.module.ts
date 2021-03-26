@@ -10,12 +10,12 @@ import { NavComponent } from './components/nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { TestErrorsComponent } from './components/test-errors/test-errors.component';
-import { MemberListComponent } from './components/members/member-list/member-list.component';
-import { MemberDetailComponent } from './components/members/member-detail/member-detail.component';
-import { MemberEditComponent } from './components/members/member-edit/member-edit.component';
+import { CustomerListComponent } from './components/customers/customer-list/customer-list.component';
+import { CustomerDetailComponent } from './components/customers/customer-detail/customer-detail.component';
+import { CustomerEditComponent } from './components/customers/customer-edit/customer-edit.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule } from '@angular/forms';
-import { MemberCardComponent } from './components/members/member-card/member-card.component';
+import { CustomerCardComponent } from './components/customers/customer-card/customer-card.component';
 
 
 @NgModule({
@@ -24,10 +24,10 @@ import { MemberCardComponent } from './components/members/member-card/member-car
     HomeComponent,
     NavComponent,
     TestErrorsComponent,
-    MemberListComponent,
-    MemberDetailComponent,
-    MemberEditComponent,
-    MemberCardComponent,
+    CustomerListComponent,
+    CustomerDetailComponent,
+    CustomerEditComponent,
+    CustomerCardComponent,
     RegisterComponent
   ],
   imports: [
