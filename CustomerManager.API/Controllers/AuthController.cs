@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CustomerManager.API.DTOs;
 using CustomerManager.API.Models;
-using CustomerManager.API.Repositories;
 using CustomerManager.API.Repositories.Interfaces;
 using CustomerManager.API.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -58,7 +57,7 @@ namespace CustomerManager.API.Controllers
             }
 
             var token = _tokenService.CreateToken(customer);
-            _logger.LogInformation($"New token created for {customer.UserName}", token);
+            _logger.LogInformation($"New token created for {customer.UserName}");
 
             return new UserDTO
             {
@@ -72,9 +71,6 @@ namespace CustomerManager.API.Controllers
         [HttpDelete("{username}")]
         public async Task<IActionResult> RemoveUserAsync(string username)
         {
-            //Todo
-            //update
-
             var usernameFromToken = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var user = await _customerRepo.GetUserByUserNameAsync(usernameFromToken);
             await _customerRepo.RemoveAsync(user);

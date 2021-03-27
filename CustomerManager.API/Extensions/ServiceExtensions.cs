@@ -25,7 +25,7 @@ namespace CustomerManager.API.Extensions
                     */
             services.AddDbContext<CustomerContext>(opt =>
            opt.UseSqlite(config.GetConnectionString("Default")));
-    
+
 
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -38,7 +38,11 @@ namespace CustomerManager.API.Extensions
         {
             services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<CustomerContext>();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
                  .AddJwtBearer(opt =>
                  {
                      opt.TokenValidationParameters = new TokenValidationParameters
@@ -49,7 +53,7 @@ namespace CustomerManager.API.Extensions
                          ValidateIssuer = false
                      };
                  });
-            
+
             //Todo
             //move key to appsettings secret/dev
             return services;
