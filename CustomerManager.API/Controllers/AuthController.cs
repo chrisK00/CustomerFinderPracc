@@ -66,7 +66,6 @@ namespace CustomerManager.API.Controllers
             };
         }
 
-
         [Authorize]
         [HttpDelete("{username}")]
         public async Task<IActionResult> RemoveUserAsync(string username)
@@ -78,10 +77,11 @@ namespace CustomerManager.API.Controllers
             //Todo
             //Throw keynotfound exception inside of service
             //Catch and send back Notfound
-            await _unitOfWork.SaveAsync();
+            if (!await _unitOfWork.SaveAsync())
+            {
+                return BadRequest("Failed to update user");
+            }
             return NoContent();
         }
     }
 }
-
-

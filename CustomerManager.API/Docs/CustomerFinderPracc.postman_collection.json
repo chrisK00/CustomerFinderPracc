@@ -73,7 +73,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"Hull\"\r\n}",
+					"raw": "{\r\n    \"username\": \"Hull\",\r\n    \"password\":\"Password123.\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -88,6 +88,39 @@
 					"path": [
 						"auth",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJjaHJpcyIsIm5iZiI6MTYxNjg2NDUzNywiZXhwIjoxNjE2OTUwOTM3LCJpYXQiOjE2MTY4NjQ1Mzd9.4_E8fx8RkX0v8vtNJeFuz-4LD0pVhEIzHhMpb3ngX_4tLbE7Jgcobc6BjjhFQ9XxxxmD-S5tCRU8pK_vJ13r5A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{custUrl}}/auth/chris",
+					"host": [
+						"{{custUrl}}"
+					],
+					"path": [
+						"auth",
+						"chris"
 					]
 				}
 			},
@@ -145,6 +178,56 @@
 					"path": [
 						"customers",
 						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"chris\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{custUrl}}/auth/register",
+					"host": [
+						"{{custUrl}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get members",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{custUrl}}/customers",
+					"host": [
+						"{{custUrl}}"
+					],
+					"path": [
+						"customers"
 					]
 				}
 			},

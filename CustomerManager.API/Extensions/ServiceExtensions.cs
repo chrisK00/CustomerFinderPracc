@@ -26,7 +26,6 @@ namespace CustomerManager.API.Extensions
             services.AddDbContext<CustomerContext>(opt =>
            opt.UseSqlite(config.GetConnectionString("Default")));
 
-
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();

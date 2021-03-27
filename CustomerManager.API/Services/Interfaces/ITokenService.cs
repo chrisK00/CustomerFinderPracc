@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CustomerManager.API.DTOs;
-using CustomerManager.API.Models;
+﻿using CustomerManager.API.DTOs;
 
 namespace CustomerManager.API.Services.Interfaces
 {

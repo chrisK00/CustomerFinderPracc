@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using CustomerManager.API.Data;
 using CustomerManager.API.DTOs;
 using CustomerManager.API.Models;
 using CustomerManager.API.Repositories.Interfaces;
@@ -66,6 +65,6 @@ namespace CustomerManager.API.Repositories
         public async Task AddAsync(AppUser user, string password)
         {
             await _userManager.CreateAsync(user, password);
-        }    
+        }
     }
 }

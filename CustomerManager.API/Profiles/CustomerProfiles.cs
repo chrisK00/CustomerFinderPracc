@@ -10,7 +10,7 @@ namespace CustomerManager.API.Profiles
         public CustomerProfiles()
         {
             CreateMap<AppUser, CustomerDTO>()
-                .ForMember(dest => dest.MainPhotoUrl, opt => opt.MapFrom(src => 
+                .ForMember(dest => dest.MainPhotoUrl, opt => opt.MapFrom(src =>
                 src.Photos.FirstOrDefault(p => p.IsMain).Url));
             // for this member
             //option is map from source

@@ -3,7 +3,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using CustomerManager.API.DTOs;
-using CustomerManager.API.Models;
 using CustomerManager.API.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -52,7 +51,7 @@ namespace CustomerManager.API.Controllers
                 return NotFound(username);
             }
 
-            return customer; 
+            return customer;
         }
 
         //Todo
@@ -64,11 +63,12 @@ namespace CustomerManager.API.Controllers
             var user = await _customerRepo.GetUserByUserNameAsync(usernameFromToken);
             _mapper.Map(customer, user);
 
-            if (await _unitOfWork.SaveAsync())
+            if (!await _unitOfWork.SaveAsync())
             {
-                return NoContent();
+                return BadRequest("Failed to update user");
             }
-            return BadRequest("Failed to update user");
-        }                   
+            return NoContent();
+           
+        }
     }
 }
