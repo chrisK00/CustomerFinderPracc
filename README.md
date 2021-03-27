@@ -1,5 +1,5 @@
 # CustomerFinderPracc
-Practicing general stuff - not sure why its called customermanager honestly just random stuff (reason for lack of comments except for todos). Implementing a couple of things learnt from https://www.udemy.com/course/build-an-app-with-aspnet-core-and-angular-from-scratch/
+Practicing general stuff - not sure why its called customermanager honestly just random stuff (reason for lack of comments except for todos and weird namings). Implementing a couple of things learnt from https://www.udemy.com/course/build-an-app-with-aspnet-core-and-angular-from-scratch/
 
 ### Whats implemented/practiced so far
 Api:
