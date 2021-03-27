@@ -61,7 +61,7 @@ namespace CustomerManager.API.Controllers
 
         [Authorize]
         [HttpDelete("{username}")]
-        public async Task<IActionResult> RemoveUserAsync(string username, UserDTO userDTO)
+        public async Task<IActionResult> RemoveUserAsync(string username)
         {
             //Todo
             //update
