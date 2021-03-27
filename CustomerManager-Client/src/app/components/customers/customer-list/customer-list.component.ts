@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Customer } from 'src/app/_interfaces/customer';
 import { AuthService } from 'src/app/_services/auth.service';
 import { CustomersService } from 'src/app/_services/customers.service';
@@ -9,17 +10,13 @@ import { CustomersService } from 'src/app/_services/customers.service';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-
-  customers: Customer[];
+  customers$: Observable<Customer[]>;
 
   constructor(private customersService: CustomersService, public authService: AuthService) { }
 
   ngOnInit(): void {
-    this.loadCustomers();
+    this.customers$ = this.customersService.getCustomers();
   }
 
-  loadCustomers() {
-    this.customersService.getCustomers().subscribe(customers => this.customers = customers),
-      error => console.log(error);
-  }
+
 }
