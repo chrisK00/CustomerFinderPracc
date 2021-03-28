@@ -45,7 +45,8 @@ namespace CustomerManager.API.Middleware
                       new ApiException(context.Response.StatusCode, ex?.Message, ex?.StackTrace) :
                       new ApiException(context.Response.StatusCode, ex?.Message);
 
-                var result = JsonSerializer.Serialize(response, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                var result = JsonSerializer.Serialize(response,
+                    new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
                 await context.Response.WriteAsync(result);
             }
         }
