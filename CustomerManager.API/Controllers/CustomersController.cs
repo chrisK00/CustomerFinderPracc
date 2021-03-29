@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using CustomerManager.API.DTOs;
+using CustomerManager.API.Extensions;
 using CustomerManager.API.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -59,7 +60,7 @@ namespace CustomerManager.API.Controllers
         [HttpPut("{username}")]
         public async Task<IActionResult> UpdateCustomer(string username, CustomerUpdateDTO customer)
         {
-            var usernameFromToken = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var usernameFromToken = User.GetUsername();
             var user = await _customerRepo.GetUserByUserNameAsync(usernameFromToken);
             _mapper.Map(customer, user);
 
@@ -67,8 +68,24 @@ namespace CustomerManager.API.Controllers
             {
                 return BadRequest("Failed to update user");
             }
+            return NoContent();           
+        }
+
+        [HttpDelete("{username}")]
+        public async Task<IActionResult> RemoveUserAsync(string username)
+        {
+            var usernameFromToken = User.GetUsername();
+            var user = await _customerRepo.GetUserByUserNameAsync(usernameFromToken);
+            await _customerRepo.RemoveAsync(user);
+
+            //Todo
+            //Throw keynotfound exception inside of service
+            //Catch and send back Notfound
+            if (!await _unitOfWork.SaveAsync())
+            {
+                return BadRequest("Failed to update user");
+            }
             return NoContent();
-           
         }
     }
 }

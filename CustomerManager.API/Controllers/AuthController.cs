@@ -64,24 +64,6 @@ namespace CustomerManager.API.Controllers
                 UserName = customer.UserName,
                 Token = token
             };
-        }
-
-        [Authorize]
-        [HttpDelete("{username}")]
-        public async Task<IActionResult> RemoveUserAsync(string username)
-        {
-            var usernameFromToken = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var user = await _customerRepo.GetUserByUserNameAsync(usernameFromToken);
-            await _customerRepo.RemoveAsync(user);
-
-            //Todo
-            //Throw keynotfound exception inside of service
-            //Catch and send back Notfound
-            if (!await _unitOfWork.SaveAsync())
-            {
-                return BadRequest("Failed to update user");
-            }
-            return NoContent();
-        }
+        }         
     }
 }
