@@ -1,11 +1,9 @@
-﻿using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using CustomerManager.API.DTOs;
 using CustomerManager.API.Models;
 using CustomerManager.API.Repositories.Interfaces;
 using CustomerManager.API.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -38,7 +36,7 @@ namespace CustomerManager.API.Controllers
         {
             await _customerRepo.AddAsync(_mapper.Map<AppUser>(userRegisterDTO), userRegisterDTO.Password);
             await _unitOfWork.SaveAsync();
-            return Created("Customers", userRegisterDTO.UserName);
+            return NoContent();
         }
 
         [HttpPost("login")]
