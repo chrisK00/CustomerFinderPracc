@@ -93,7 +93,7 @@ namespace CustomerManager.API.Controllers
         public async Task<ActionResult<PhotoDTO>> AddPhoto(IFormFile file)
         {
             //Todo
-            //add and configure cloudinary or change from photo to todo instead
+            //add and configure cloudinary or change from photo to todo instead or mb quotes?
             var photo = new PhotoDTO { };
 
             return CreatedAtRoute(nameof(GetCustomer), new { username = "Hull" }, photo);

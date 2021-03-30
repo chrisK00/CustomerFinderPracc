@@ -1,3 +1,8 @@
 <h5 *ngIf="(authService.currentUser$ | async) as user" class="typewriter">Welcome {{user.userName
     |titlecase}}</h5>
-<app-register *ngIf="(authService.currentUser$ | async) === null"></app-register>
+
+<div class="row justify-content-center">
+    <div class="col-4">
+        <app-register *ngIf="(authService.currentUser$ | async) === null"></app-register>
+    </div>
+</div>

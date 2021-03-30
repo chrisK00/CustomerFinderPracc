@@ -14,7 +14,7 @@ import { CustomerListComponent } from './components/customers/customer-list/cust
 import { CustomerDetailComponent } from './components/customers/customer-detail/customer-detail.component';
 import { CustomerEditComponent } from './components/customers/customer-edit/customer-edit.component';
 import { RegisterComponent } from './components/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerCardComponent } from './components/customers/customer-card/customer-card.component';
 
 
@@ -35,7 +35,8 @@ import { CustomerCardComponent } from './components/customers/customer-card/cust
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

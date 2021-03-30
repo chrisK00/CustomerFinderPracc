@@ -32,7 +32,7 @@ export class AuthService {
     this.currentUser.next(null);
   }
 
-  register(user: User) {
+  register(user: any) {
     return this.http.post(this.baseUrl + 'auth/register', user);
   }
 }

@@ -1,14 +1,20 @@
-<h3 class="ml-5"><i class="fa fa-2x fa-user-plus"></i> </h3>
-<form class="text-dark mt-4" (ngSubmit)="register()" #loginForm="ngForm">
-    <div class="form-group">
+<h3><i class="fa fa-2x fa-user-plus"></i> </h3>
+<form class="text-dark mt-3" (ngSubmit)="register()" [formGroup]='registerForm'>
+    <div class="form-group form-inline">
         <label for="rUsername"><strong>Username</strong></label>
-        <input [(ngModel)]="user.userName" required class="ml-2 form-item p-1" type="text" name="rUsername"
-            id="rUsername">
+        <input [class.is-invalid]='registerForm.get("userName").errors && registerForm.get("userName").touched'
+            formControlName='userName' class="ml-3 form-control" type="text" id="rUsername">
     </div>
-    <div class="form-group">
+    <div class="form-group form-inline">
         <label class="ml-1" for="rPassword"><strong>Password</strong></label>
-        <input [(ngModel)]="user.password" required class="ml-2 form-item p-1" type="password" name="rPassword"
+        <input formControlName='password' required class="ml-3 form-control"
+            [class.is-invalid]='registerForm.get("userName").errors && registerForm.get("password").touched' type="password"
             id="rPassword">
+        <div *ngIf="registerForm.get('password').hasError('required')" class="invalid-feedback">Please enter a password
+        </div>
+        <div *ngIf="registerForm.get('password').hasError('minlength')" class="invalid-feedback">Password must be at least 6
+            characters
+        </div>
     </div>
-    <button type="submit" [disabled]="!loginForm.valid" class="btn ml-5 btn-success text-white">Register</button>
+    <button type="submit" [disabled]="!registerForm.valid" class="btn btn-success text-white">Register</button>
 </form>
