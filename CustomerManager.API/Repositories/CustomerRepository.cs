@@ -24,37 +24,30 @@ namespace CustomerManager.API.Repositories
 
         public async Task<AppUser> GetUserAsync(string id)
         {
-            var user = await _userManager.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
-            return user;
+            return await _userManager.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task<AppUser> GetUserByUserNameAsync(string username)
         {
-            var user = await _userManager.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.UserName == username);
-            return user;
+            return await _userManager.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.UserName == username);
         }
 
         public async Task<ICollection<CustomerDTO>> GetCustomersAsync()
         {
-            var customers = await _userManager.Users.ProjectTo<CustomerDTO>(_mapper.ConfigurationProvider).ToListAsync();
-            return customers;
+            return await _userManager.Users.ProjectTo<CustomerDTO>(_mapper.ConfigurationProvider).ToListAsync();
         }
 
         public async Task<CustomerDTO> GetCustomerByUserNameAsync(string username)
         {
-            var customer = await _userManager.Users
+            return await _userManager.Users
                 .Where(u => u.UserName == username)
                 .ProjectTo<CustomerDTO>(_mapper.ConfigurationProvider).SingleOrDefaultAsync();
-
-            return customer;
         }
 
         public async Task<UserDTO> GetUserDTOByUserNameAsync(string username)
         {
-            var user = await _userManager.Users.Where(u => u.UserName == username)
+           return await _userManager.Users.Where(u => u.UserName == username)
                 .ProjectTo<UserDTO>(_mapper.ConfigurationProvider).SingleOrDefaultAsync();
-
-            return user;
         }
 
         public async Task RemoveAsync(AppUser user)
